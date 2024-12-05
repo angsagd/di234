@@ -1,14 +1,6 @@
 <?php
-session_start();
-// cek apakah user sudah login
-// jika belum login, redirect ke halaman login
-if(!isset($_SESSION['username'])) {
-  $_SESSION['error'] = 'Harap login terlebih dahulu';
-  header('location: login.php');
-  exit;
-}
-
-$username = $_SESSION['username'];
+require_once 'function.php';
+cek_session();
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -16,39 +8,15 @@ $username = $_SESSION['username'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Member Area</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 10px 0;
-      text-align: center;
-    }
-    main {
-      padding: 20px;
-    }
-    hr {
-      margin: 20px 0;
-    }
-    a.btn-link {
-      padding: 8px 24px;
-      background-color: #333;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <h1>Member Area</h1>
   </header>
+  <?php show_nav(); ?>
   <main>
-    <h2>Selamat Datang, <?= $username ?></h2>
+    <h2>Selamat Datang, <?= $_SESSION['user']['username'] ?></h2>
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, omnis eveniet. Quia consectetur, nemo nisi molestias fuga, saepe consequatur reiciendis asperiores nostrum nobis debitis fugiat ipsam quasi molestiae harum voluptas!</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis consectetur magni eligendi tempora earum quisquam deleniti aspernatur! Sint reiciendis blanditiis rem placeat sequi sed inventore saepe omnis in aperiam provident neque earum quas, amet error officia quaerat dolor corrupti, assumenda totam sunt? Incidunt, nisi quis aut quam nostrum eius necessitatibus!</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, nisi.</p>

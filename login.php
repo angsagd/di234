@@ -1,10 +1,6 @@
 <?php
-session_start();
-
-if(isset($_SESSION['username'])) {
-  header('location: member.php');
-  exit;
-}
+require_once 'function.php';
+cek_session(true);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -12,65 +8,14 @@ if(isset($_SESSION['username'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Member</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 10px 0;
-      text-align: center;
-    }
-    main {
-      padding: 20px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      width: 300px;
-      margin: 0 auto;
-    }
-    .row {
-      margin-bottom: 14px;
-    }
-    label {
-      display: inline-block;
-      
-      margin-bottom: 5px;
-    }
-    input.input-text {
-      padding: 5px;
-      width: 100%;
-    }
-    button {
-      padding: 8px 24px;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .alert {
-      background-color: #fee;
-      color: #f00;
-      padding: 5px;
-      margin-bottom: 14px;
-      border: 1px solid #f00;
-      border-radius: 4px;
-      text-align: center;
-      width: 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <h1>Login Member</h1>
   </header>
   <main>
-    <form action="validasi.php" method="post">
+    <form id="login-form" action="validasi.php" method="post">
 <?php
 if(isset($_SESSION['error'])) {
   echo '<div class="alert">';
