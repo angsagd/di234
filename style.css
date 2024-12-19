@@ -98,3 +98,45 @@ table#detail-table td {
   border-bottom: 1px solid #999;
   border-top: 1px solid #999;
 }
+ul#f-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+ul#f-list li {
+  padding: 5px 0;
+  vertical-align: middle;
+}
+ul#f-list li:hover {
+  background-color: #f9f9f9;
+}
+ul#f-list li a {
+  text-decoration: none;
+}
+ul#f-list li a:hover {
+  text-decoration: underline;
+}
+.f-name {
+  color: #666;
+  width: 50%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.f-name:hover {
+  color: #000;
+  font-style: italic;
+}
+.f-size {
+  color: #333;
+  width: 20%;
+  display: inline-block;
+  text-align: right;
+}
+.f-del {
+  color: #f00;
+  width: 20%;
+  display: inline-block;
+  text-align: right;
+}

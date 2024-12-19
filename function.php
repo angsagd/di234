@@ -2,8 +2,8 @@
 session_start();
 
 const DB_HOST = 'localhost';
-const DB_USER = 'root';
-const DB_PASS = '';
+const DB_USER = 'webuser';
+const DB_PASS = 'webuser';
 const DB_NAME = 'di234';
 
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Koneksi Gagal');
