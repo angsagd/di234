@@ -6,6 +6,15 @@ const DB_USER = 'webuser';
 const DB_PASS = 'webuser';
 const DB_NAME = 'di234';
 
+const NAVMENU = [
+  'Home' => 'member.php',
+  'Users' => 'user.php',
+  'Add' => 'new.php',
+  'Storage' => 'download.php',
+  'Profile' => 'profile.php',
+  'Logout' => 'logout.php'
+];
+
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Koneksi Gagal');
 
 function db_query($sql) {
@@ -27,11 +36,11 @@ function cek_session($kondisi = false) {
 function show_nav() {
   echo '<nav> ';
   echo '<ul> ';
-  echo '<li><a href="member.php">Home</a></li> ';
-  echo '<li><a href="user.php">Users</a></li> ';
-  echo '<li><a href="new.php">Add</a></li> ';
-  echo '<li><a href="detail.php?id='.$_SESSION['user']['id'].'">Profile</a></li> ';
-  echo '<li><a href="logout.php">Logout</a></li> ';
+  foreach(NAVMENU as $label => $link) {
+    echo '<li> ';
+    echo '<a href="'.$link.'">'.$label.'</a> ';
+    echo '</li> ';
+  }
   echo '</ul> ';
   echo '</nav> ';
 }

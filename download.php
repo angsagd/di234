@@ -1,4 +1,7 @@
 <?php
+require_once 'function.php';
+cek_session();
+
 chdir('storage');
 $files = scandir(getcwd());
 
@@ -14,6 +17,7 @@ $files = scandir(getcwd());
   <header>
     <h1>Online Storage</h1>
   </header>
+  <?php show_nav(); ?>
   <main>
     <section>
       <h2>Upload</h2>
@@ -30,10 +34,14 @@ $files = scandir(getcwd());
 <?php
 foreach ($files as $file) {
   if(is_file($file) && substr($file, 0, 1)!=='.') {
+    $size = filesize($file);
+    if($size>=pow(2, 20)) $size = round($size/pow(2, 20), 1) . ' MB';
+    elseif($size>=pow(2, 10)) $size = round($size/pow(2, 10), 1) . ' KB';
+    else $size = $size . ' B';
     echo '<li>';
     echo '<a href="storage/' . $file . '" class="f-name">' . $file . '</a>';
-    echo '<span class="f-size">10kb</span>';
-    echo '<a href="#" class="f-del">x</a>';
+    echo '<span class="f-size">'.$size.'</span>';
+    echo '<a href="unlink.php?f='.$file.'" class="f-del" onclick="return konfirmasi()">x</a>';
     echo '</li>';
   }
 }
@@ -41,5 +49,10 @@ foreach ($files as $file) {
       </ul>
     </section>
   </main>
+  <script>
+    function konfirmasi() {
+      return confirm('Apakah Anda yakin menghapus dat ini?');
+    }
+  </script>
 </body>
 </html>
